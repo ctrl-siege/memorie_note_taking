@@ -11,7 +11,6 @@ class UserService {
 
   List<UserModel> _users = [
     UserModel(1, "Guest", "123"),
-    UserModel(2, "Student", "abc")
   ];
 
   UserService(this.container);

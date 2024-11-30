@@ -10,14 +10,14 @@ class FolderService {
   final Ref container;
 
   List<FolderModel> _folders = [
-    FolderModel(1, "Japanese Hiragana", 1, "yellow", [
-      NotesModel(1, "Hiragana Alphabet", ""),
-      NotesModel(2, "Hiragana Basic Words Pt 1", ""),
+    FolderModel(1, "Japanese Hiragana", 1, [
+      NotesModel(1, "Hiragana Alphabet", "す >> su\n し >> shi "),
+      NotesModel(2, "Hiragana Basic Words Pt 1", "すし >> sushi"),
     ]),
-    FolderModel(2, "Data Structures", 1, "green", [
-      NotesModel(1, "Stack", ""),
-      NotesModel(2, "Queue", ""),
-      NotesModel(3, "Array", ""),
+    FolderModel(2, "Data Structures", 1, [
+      NotesModel(1, "Stack", "Stack >> "),
+      NotesModel(2, "Queue", "Queue >> "),
+      NotesModel(3, "Array", "Array >>"),
     ]),
   ];
 
