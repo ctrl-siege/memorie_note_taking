@@ -1,12 +1,19 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-class FoldersScreen extends StatelessWidget {
+import 'package:memorie_note_taking/global_providers_container.dart';
+
+class FoldersScreen extends ConsumerWidget {
   const FoldersScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final folderService = ref.watch(folderServiceProvider);
+
     return Scaffold(
       appBar: AppBar(),
       body: SizedBox(
@@ -45,60 +52,37 @@ class FoldersScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [],
-                  ),
-                  Card(
-                    borderOnForeground: true,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                        side: BorderSide(width: 1.0)),
-                    child: InkWell(
-                        child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Container(
-                                height: 150,
-                                width: double.infinity,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Japanese Alphabet",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Gap(4)
-                                  ],
-                                )))),
-                  ),
-                  Gap(12),
-                  Card(
-                    borderOnForeground: true,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                        side: BorderSide(width: 1.0)),
-                    child: InkWell(
-                        child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Container(
-                                height: 150,
-                                width: double.infinity,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Data Structures",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Gap(4),
-                                  ],
-                                )))),
-                  ),
+                  Expanded(
+                    child: ListView.builder(
+                        itemCount: folderService.folders.length,
+                        itemBuilder: (context, index) => Card(
+                              borderOnForeground: true,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  side: BorderSide(width: 1.0)),
+                              child: InkWell(
+                                  child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Container(
+                                          height: 150,
+                                          width: double.infinity,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                folderService
+                                                    .folders[index].name,
+                                                style: TextStyle(
+                                                    fontSize: 16.0,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Gap(4)
+                                            ],
+                                          )))),
+                            )),
+                  )
                 ],
               ))),
     );

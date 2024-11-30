@@ -14,7 +14,7 @@ class HomeScreen extends HookWidget {
       body: SizedBox(
           width: double.infinity,
           child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
               child: Column(
                 children: [
                   Align(
@@ -25,13 +25,6 @@ class HomeScreen extends HookWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Notes",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
                           TextField(
                             decoration: InputDecoration(
                               label: Text("Search notes"),
@@ -42,7 +35,7 @@ class HomeScreen extends HookWidget {
                             ),
                             style: TextStyle(backgroundColor: Colors.white),
                           ),
-                          Gap(12)
+                          Gap(4)
                         ],
                       ),
                     ),
